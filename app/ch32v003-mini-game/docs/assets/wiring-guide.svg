@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 950" role="img" aria-labelledby="title desc">
+  <title id="title">UIAPduino CH32V003 Mini Game wiring guide</title>
+  <desc id="desc">Wiring guide using the physical left and right pin order of the UIAPduino Pro Micro CH32V003 V1.4.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 38px; font-weight: 700; fill: #17202a; letter-spacing: .4px; }
+      .component-title { font-size: 24px; font-weight: 700; fill: #17202a; }
+      .board-title { font-size: 28px; font-weight: 700; fill: #17202a; }
+      .board-subtitle { font-size: 17px; font-weight: 600; fill: #64717d; letter-spacing: 1.2px; }
+      .pin { font-size: 18px; font-weight: 700; fill: #26333d; }
+      .pin-muted { font-size: 12px; font-weight: 600; fill: #74818a; }
+      .pin-light { font-size: 16px; font-weight: 700; fill: #ffffff; }
+      .label { font-size: 19px; font-weight: 700; fill: #26333d; }
+      .wire { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+      .terminal { stroke: #17202a; stroke-width: 5; }
+      .pad-unused { fill: #d6dde1; stroke: #8d99a1; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="950" fill="#fbfaf7"/>
+  <text class="title" x="70" y="62">CH32V003 MINI GAME — WIRING GUIDE</text>
+
+  <!-- Wires are behind the components so every endpoint stays readable. -->
+  <g aria-label="wires">
+    <!-- Shared ground rail and short component returns -->
+    <path class="wire" stroke="#20262b" d="M1050 347 H1540 V905 H45"/>
+    <path class="wire" stroke="#20262b" d="M45 905 V325 H125 V380"/>
+    <path class="wire" stroke="#20262b" d="M785 865 V905"/>
+    <path class="wire" stroke="#20262b" d="M1510 510 H1540 M1510 570 H1540 M1510 630 H1540"/>
+
+    <!-- 3V3 crosses GND without a junction dot; the wires are not connected. -->
+    <path class="wire" stroke="#e53935" d="M1050 401 H1160 V120 H205 V380"/>
+
+    <!-- OLED data and clock -->
+    <path class="wire" stroke="#1877d2" d="M700 428 H520 V360 H355 V380"/>
+    <path class="wire" stroke="#f2b51d" d="M700 455 H550 V335 H280 V380"/>
+
+    <!-- Buzzer uses its own lane below the board. -->
+    <path class="wire" stroke="#8e44ad" d="M700 509 H550 V800 H675"/>
+
+    <!-- Button routes begin at the real right-side D9, D8, and D10 rows. -->
+    <path class="wire" stroke="#f07818" d="M1050 563 H1220 V510 H1350"/>
+    <path class="wire" stroke="#22a447" d="M1050 590 H1260 V570 H1350"/>
+    <path fill="none" stroke="#26333d" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" d="M1050 617 H1300 V630 H1350"/>
+    <path fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M1050 617 H1300 V630 H1350"/>
+  </g>
+
+  <!-- OLED -->
+  <g aria-label="OLED display">
+    <text class="component-title" x="70" y="315">OLED 128×64 · I²C</text>
+    <rect x="60" y="380" width="360" height="270" rx="22" fill="#0b5787" stroke="#082f4d" stroke-width="4"/>
+    <rect x="86" y="448" width="308" height="170" rx="10" fill="#10161b" stroke="#091014" stroke-width="7"/>
+    <rect x="104" y="467" width="272" height="132" rx="4" fill="#050708" stroke="#35414a" stroke-width="3"/>
+    <circle class="terminal" cx="125" cy="380" r="13" fill="#20262b"/>
+    <circle class="terminal" cx="205" cy="380" r="13" fill="#e53935"/>
+    <circle class="terminal" cx="280" cy="380" r="13" fill="#f2b51d"/>
+    <circle class="terminal" cx="355" cy="380" r="13" fill="#1877d2"/>
+    <text class="pin-light" x="125" y="418" text-anchor="middle">GND</text>
+    <text class="pin-light" x="205" y="418" text-anchor="middle">VDD</text>
+    <text class="pin-light" x="280" y="418" text-anchor="middle">SCL</text>
+    <text class="pin-light" x="355" y="418" text-anchor="middle">SDA</text>
+  </g>
+
+  <!-- Passive piezo buzzer -->
+  <g aria-label="passive piezo buzzer">
+    <text class="component-title" x="740" y="738" text-anchor="middle">BUZZER</text>
+    <circle cx="740" cy="820" r="65" fill="#252a2e" stroke="#101315" stroke-width="6"/>
+    <circle cx="740" cy="820" r="22" fill="#0b0d0e" stroke="#40474c" stroke-width="5"/>
+    <circle class="terminal" cx="675" cy="800" r="12" fill="#8e44ad"/>
+    <circle class="terminal" cx="785" cy="865" r="12" fill="#20262b"/>
+    <text class="pin-light" x="690" y="790">+</text>
+    <text class="label" x="802" y="872">−</text>
+  </g>
+
+  <!-- UIAPduino -->
+  <g aria-label="UIAPduino CH32V003">
+    <rect x="700" y="200" width="350" height="450" rx="28" fill="#f3f6f7" stroke="#82909a" stroke-width="5"/>
+    <text class="board-title" x="875" y="275" text-anchor="middle">UIAPduino</text>
+    <text class="board-subtitle" x="875" y="305" text-anchor="middle">CH32V003 · V1.4</text>
+
+    <!-- USB-C -->
+    <text class="pin-muted" x="875" y="172" text-anchor="middle">USB-C</text>
+    <rect x="839" y="178" width="72" height="40" rx="9" fill="#d9dde0" stroke="#30383e" stroke-width="4"/>
+    <rect x="850" y="188" width="50" height="20" rx="6" fill="#4f5a61"/>
+
+    <!-- Physical V1.4 header order, USB-C at the top. -->
+    <g aria-label="left header from top to bottom">
+      <circle class="pad-unused" cx="700" cy="320" r="6"/>
+      <circle class="pad-unused" cx="700" cy="347" r="6"/>
+      <circle class="pad-unused" cx="700" cy="374" r="6"/>
+      <circle class="pad-unused" cx="700" cy="401" r="6"/>
+      <circle class="terminal" cx="700" cy="428" r="10" fill="#1877d2"/>
+      <circle class="terminal" cx="700" cy="455" r="10" fill="#f2b51d"/>
+      <circle class="pad-unused" cx="700" cy="482" r="6"/>
+      <circle class="terminal" cx="700" cy="509" r="10" fill="#8e44ad"/>
+      <circle class="pad-unused" cx="700" cy="536" r="6"/>
+      <circle class="pad-unused" cx="700" cy="563" r="6"/>
+      <circle class="pad-unused" cx="700" cy="590" r="6"/>
+      <circle class="pad-unused" cx="700" cy="617" r="6"/>
+
+      <text class="pin-muted" x="716" y="324">TX · 15/A5 · PD5</text>
+      <text class="pin-muted" x="716" y="351">RX · 16/A6 · PD6</text>
+      <text class="pin-muted" x="716" y="378">GND</text>
+      <text class="pin-muted" x="716" y="405">GND</text>
+      <text class="pin" x="722" y="434">SDA · D3 · PC1</text>
+      <text class="pin" x="722" y="461">SCL · D4 · PC2</text>
+      <text class="pin-muted" x="716" y="486">LED · D2 · PC0</text>
+      <text class="pin" x="722" y="515">D5 / PC3</text>
+      <text class="pin-muted" x="716" y="540">D11 / PD1</text>
+      <text class="pin-muted" x="716" y="567">SCK · D7 · PC5</text>
+      <text class="pin-muted" x="716" y="594">MOSI · D8 · PC6</text>
+      <text class="pin-muted" x="716" y="621">MISO · D9 · PC7</text>
+    </g>
+
+    <g aria-label="right header from top to bottom">
+      <circle class="pad-unused" cx="1050" cy="320" r="6"/>
+      <circle class="terminal" cx="1050" cy="347" r="10" fill="#20262b"/>
+      <circle class="pad-unused" cx="1050" cy="374" r="6"/>
+      <circle class="terminal" cx="1050" cy="401" r="10" fill="#e53935"/>
+      <circle class="pad-unused" cx="1050" cy="428" r="6"/>
+      <circle class="pad-unused" cx="1050" cy="455" r="6"/>
+      <circle class="pad-unused" cx="1050" cy="482" r="6"/>
+      <circle class="pad-unused" cx="1050" cy="509" r="6"/>
+      <circle class="pad-unused" cx="1050" cy="536" r="6"/>
+      <circle class="terminal" cx="1050" cy="563" r="10" fill="#f07818"/>
+      <circle class="terminal" cx="1050" cy="590" r="10" fill="#22a447"/>
+      <circle class="terminal" cx="1050" cy="617" r="10" fill="#ffffff"/>
+
+      <text class="pin-muted" x="1034" y="324" text-anchor="end">5V</text>
+      <text class="pin" x="1028" y="353" text-anchor="end">GND</text>
+      <text class="pin-muted" x="1034" y="378" text-anchor="end">RESET / PD7</text>
+      <text class="pin" x="1028" y="407" text-anchor="end">3V3</text>
+      <text class="pin-muted" x="1034" y="432" text-anchor="end">D12/A3 · PD2</text>
+      <text class="pin-muted" x="1034" y="459" text-anchor="end">D6/A2 · PC4</text>
+      <text class="pin-muted" x="1034" y="486" text-anchor="end">D0/A1 · PA1</text>
+      <text class="pin-muted" x="1034" y="513" text-anchor="end">D1/A0 · PA2</text>
+      <text class="pin-muted" x="1034" y="540" text-anchor="end">D7 · PC5</text>
+      <text class="pin" x="1028" y="569" text-anchor="end">D9 · PC7</text>
+      <text class="pin" x="1028" y="596" text-anchor="end">D8 · PC6</text>
+      <text class="pin" x="1028" y="623" text-anchor="end">D10 / PD0</text>
+    </g>
+  </g>
+
+  <!-- Buttons -->
+  <g aria-label="buttons">
+    <text class="component-title" x="1350" y="462">BUTTONS</text>
+    <g>
+      <rect x="1350" y="486" width="160" height="48" rx="15" fill="#ffffff" stroke="#f07818" stroke-width="4"/>
+      <circle cx="1382" cy="510" r="17" fill="#252b30" stroke="#0d1012" stroke-width="4"/>
+      <circle class="terminal" cx="1350" cy="510" r="10" fill="#f07818"/>
+      <circle class="terminal" cx="1510" cy="510" r="10" fill="#20262b"/>
+      <text class="label" x="1447" y="517" text-anchor="middle">RIGHT</text>
+    </g>
+    <g>
+      <rect x="1350" y="546" width="160" height="48" rx="15" fill="#ffffff" stroke="#22a447" stroke-width="4"/>
+      <circle cx="1382" cy="570" r="17" fill="#252b30" stroke="#0d1012" stroke-width="4"/>
+      <circle class="terminal" cx="1350" cy="570" r="10" fill="#22a447"/>
+      <circle class="terminal" cx="1510" cy="570" r="10" fill="#20262b"/>
+      <text class="label" x="1447" y="577" text-anchor="middle">LEFT</text>
+    </g>
+    <g>
+      <rect x="1350" y="606" width="160" height="48" rx="15" fill="#ffffff" stroke="#26333d" stroke-width="4"/>
+      <circle cx="1382" cy="630" r="17" fill="#252b30" stroke="#0d1012" stroke-width="4"/>
+      <circle class="terminal" cx="1350" cy="630" r="10" fill="#ffffff"/>
+      <circle class="terminal" cx="1510" cy="630" r="10" fill="#20262b"/>
+      <text class="label" x="1454" y="637" text-anchor="middle">ACTION</text>
+    </g>
+  </g>
+
+  <!-- Ground rail label -->
+  <rect x="65" y="879" width="128" height="50" rx="14" fill="#ffffff" stroke="#20262b" stroke-width="4"/>
+  <text class="label" x="129" y="911" text-anchor="middle">GND RAIL</text>
+</svg>
